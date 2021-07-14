@@ -1,3 +1,5 @@
+[![Node.js CI](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/node.js.yml/badge.svg)](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/node.js.yml)
+
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-article-xml-json/badge.svg?branch=main)](https://coveralls.io/github/FDMediagroep/fd-article-xml-json?branch=main)
 
 # fdmg-xml-json
