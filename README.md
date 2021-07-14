@@ -1,0 +1,33 @@
+# fdmg-xml-json
+
+This repository is a simple xml to json parser for fdmg-article-content.
+
+## Prerequisites
+
+-   NodeJS
+-   NPM
+
+## Installation
+
+Install the `fdmg-xml-json` as dependency for your project:
+
+-   NPMJS: `npm i @fdmg/article-xml-json`
+
+## Getting Started
+
+To run the repository locally:
+-   Run `npm i` to install required dependencies
+-   Run `npm run build` to build the project
+
+To use `@fdmg/article-xml-json` in your project:
+-   Install as a dependency
+```
+import XMLToJSON from "@fdmg/article-xml-json";
+
+function Foo() {
+    return (
+        XMLToJSON.parseXMLToJSON(<<your fdmg-article-content-xml file here>>);
+    )
+}
+```
+

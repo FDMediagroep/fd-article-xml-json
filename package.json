@@ -1,0 +1,28 @@
+{
+  "name": "@fdmg/article-xml-json",
+  "version": "1.0.3",
+  "description": "parses fdmg-xml to article-json",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "author": "DirkVanDerStraaten",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.24",
+    "jest": "^27.0.6",
+    "ts-jest": "^27.0.3",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "xmldom": "^0.6.0"
+  }
+}
