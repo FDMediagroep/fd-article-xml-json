@@ -1,3 +1,5 @@
+[![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-article-xml-json/badge.svg?branch=main)](https://coveralls.io/github/FDMediagroep/fd-article-xml-json?branch=main)
+
 # fdmg-xml-json
 
 This repository is a simple xml to json parser for fdmg-article-content.
