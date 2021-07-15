@@ -88,6 +88,9 @@ module.exports = {
             ],
         }),
     ],
+    externals: {
+        xmldom: 'xmldom'
+    },
     module: {
         strictExportPresence: true,
         rules: [

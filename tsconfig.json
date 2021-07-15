@@ -10,7 +10,7 @@
         "declarationDir": "dist"
     },
     "include": [
-        "src/**/*.ts"
+        "src/**/*.ts", "webpack.config.js" 
     ],
     "exclude": [
         "node_modules", "__tests__", "dist"

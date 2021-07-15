@@ -73,7 +73,6 @@ export function parseXMLToJSON(doc: string) {
 
             switch (childNode.nodeName) {
                 case 'fdmg-bulletpoint':
-                    console.log(innerHTML(childNode, 'fdmg-content'));
                     articleContentJSON.push({
                         name: 'fdmg-bulletpoint',
                         key: idx,
