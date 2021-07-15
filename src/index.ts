@@ -1,3 +1,3 @@
-import  { parseXMLToJSON } from "./XMLToJSON";
+import { parseXMLToJSON } from './XMLToJSON';
 
 export { parseXMLToJSON };
