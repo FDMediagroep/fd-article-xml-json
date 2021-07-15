@@ -26,9 +26,7 @@
     "jest": "^27.0.6",
     "ts-jest": "^27.0.3",
     "ts-loader": "^9.2.3",
-    "typescript": "^4.3.5"
-  },
-  "dependencies": {
+    "typescript": "^4.3.5",
     "@typescript-eslint/eslint-plugin": "^4.28.3",
     "copy-webpack-plugin": "^9.0.1",
     "cross-env": "^7.0.3",
@@ -38,7 +36,9 @@
     "prettier": "^2.3.2",
     "webpack": "^5.44.0",
     "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.2",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
     "xmldom": "^0.6.0"
   }
 }
