@@ -2,7 +2,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-article-xml-json/badge.svg?branch=main)](https://coveralls.io/github/FDMediagroep/fd-article-xml-json?branch=main)
 [![Node.js Package](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/npm-publish.yml)
 [![Bundle-size minified+gzip](https://img.shields.io/bundlephobia/minzip/@fdmg/fd-article-xml-json)](https://bundlephobia.com/result?p=@fdmg/fd-article-xml-json)
-[![NPM](https://img.shields.io/npm/v/@fdmg/fd-article-xml-json?color=blue)](https://npmjs.com/package/@fdmg%2Ffd-article-xml-json)
+[![NPM](https://img.shields.io/npm/v/@fdmg/fd-article-xml-json?color=blue)](https://npmjs.com/package/@fdmg%2Ffdmg-xml-json)
 
 # fdmg-xml-json
 
