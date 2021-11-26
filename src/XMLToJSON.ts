@@ -249,8 +249,6 @@ export function parseXMLToJSON(doc: string) {
                     });
                     break;
                 case 'fdmg-section-break':
-                    console.log('hoi');
-                    
                     articleContentJSON.push({
                         name: 'fdmg-section-break',
                         key: idx,
