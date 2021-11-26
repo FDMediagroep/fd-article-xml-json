@@ -1,44 +1,43 @@
 {
-  "name": "@fdmg/article-xml-json",
-  "version": "1.0.5",
-  "description": "parses fdmg-xml to article-json",
-  "main": "index.js",
-  "types": "index.d.ts",
-  "files": [
-    "dist"
-  ],
-  "publishConfig": {
-    "access": "public"
-  },
-  "scripts": {
-    "build": "npm run webpack",
-    "lint": "eslint \"src/**\"",
-    "prettier": "prettier -c **/*.ts",
-    "test": "jest",
-    "watch": "npm run webpack:dev -- --watch",
-    "webpack": "cross-env WEBPACK_BUNDLE_ANALYZER=true NODE_ENV=production webpack --mode=production",
-    "webpack:dev": "cross-env NODE_ENV=development webpack --mode=development"
-  },
-  "author": "DirkVanDerStraaten",
-  "license": "ISC",
-  "devDependencies": {
-    "@types/jest": "^26.0.24",
-    "jest": "^27.0.6",
-    "ts-jest": "^27.0.3",
-    "ts-loader": "^9.2.3",
-    "typescript": "^4.3.5",
-    "@typescript-eslint/eslint-plugin": "^4.28.3",
-    "copy-webpack-plugin": "^9.0.1",
-    "cross-env": "^7.0.3",
-    "eslint": "^7.30.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.3.2",
-    "webpack": "^5.44.0",
-    "webpack-bundle-analyzer": "^4.4.2",
-    "webpack-cli": "^4.7.2"
-  },
-  "dependencies": {
-    "xmldom": "^0.6.0"
-  }
+    "name": "@fdmg/article-xml-json",
+    "version": "1.0.7",
+    "description": "parses fdmg-xml to article-json",
+    "main": "index.js",
+    "types": "index.d.ts",
+    "publishConfig": {
+        "access": "public"
+    },
+    "scripts": {
+        "build": "npm run webpack",
+        "lint": "eslint \"src/**\"",
+        "prettier": "prettier -c **/*.ts",
+        "test": "concurrently \"jest\" \"npm run lint\" \"npm run prettier\"",
+        "watch": "npm run webpack:dev -- --watch",
+        "webpack": "cross-env WEBPACK_BUNDLE_ANALYZER=true NODE_ENV=production webpack --mode=production",
+        "webpack:dev": "cross-env NODE_ENV=development webpack --mode=development"
+    },
+    "author": "DirkVanDerStraaten",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^26.0.24",
+        "@typescript-eslint/eslint-plugin": "^4.28.5",
+        "@typescript-eslint/parser": "^4.28.5",
+        "concurrently": "^6.2.0",
+        "copy-webpack-plugin": "^9.0.1",
+        "cross-env": "^7.0.3",
+        "eslint": "^7.31.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^3.4.0",
+        "jest": "^27.0.6",
+        "prettier": "^2.3.2",
+        "ts-jest": "^27.0.4",
+        "ts-loader": "^9.2.4",
+        "typescript": "^4.3.5",
+        "webpack": "^5.47.0",
+        "webpack-bundle-analyzer": "^4.4.2",
+        "webpack-cli": "^4.7.2"
+    },
+    "dependencies": {
+        "xmldom": "^0.6.0"
+    }
 }
