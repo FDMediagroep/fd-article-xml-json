@@ -248,6 +248,13 @@ export function parseXMLToJSON(doc: string) {
                         id: innerHTML(childNode, 'fdmg-id'),
                     });
                     break;
+                case 'fdmg-section-break':
+                    articleContentJSON.push({
+                        name: 'fdmg-section-break',
+                        key: idx,
+                        type: innerHTML(childNode, 'type')
+                    });
+                    break;
                 default:
                     // Treat non fdmg elements as normal HTML.
                     if (childNode?.nodeName?.indexOf('fdmg-') === -1) {
