@@ -252,7 +252,7 @@ export function parseXMLToJSON(doc: string) {
                     articleContentJSON.push({
                         name: 'fdmg-section-break',
                         key: idx,
-                        type: innerHTML(childNode, 'type')
+                        type: innerHTML(childNode, 'type'),
                     });
                     break;
                 default:
