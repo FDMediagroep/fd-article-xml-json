@@ -21,7 +21,7 @@
     "devDependencies": {
         "@types/jest": "^26.0.24",
         "@typescript-eslint/eslint-plugin": "^5.0.0",
-        "@typescript-eslint/parser": "^5.0.0",
+        "@typescript-eslint/parser": "^5.5.0",
         "concurrently": "^6.2.0",
         "copy-webpack-plugin": "^9.0.1",
         "cross-env": "^7.0.3",
