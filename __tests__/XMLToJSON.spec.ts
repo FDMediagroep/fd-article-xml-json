@@ -52,9 +52,18 @@ describe('parseXMLToJSON', () => {
                 content:
                     '<fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. <fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price>​<fdmg-data-currency>€</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price>​<fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
             },
+            {
+                name: 'fdmg-stock-quote',
+                key: 4,
+                isin: '<fdmg-isin/>',
+                exchange: 'XSHG',
+                'data-currency': 'CNY',
+                'data-difference': '+0,48%',
+                'data-name': 'CHINA-CSI 100 Index',
+                'data-price': '4.001,71',
+            },
         ];
         const actual = parseXMLToJSON(xmlString);
-
         expect(actual).toEqual(expected);
     });
     it('should return a json with bulletpoint', () => {
