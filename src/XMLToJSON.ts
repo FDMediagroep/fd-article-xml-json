@@ -67,7 +67,7 @@ function processParagraph(childNode: HTMLElement) {
     [].slice
         .call(childNode.childNodes)
         .forEach((pChild: HTMLElement, pIdx: number) => {
-            if (pChild.nodeName !== 'fdmg-stock-quote' && pChild.textContent) {
+            if (pChild.nodeName !== 'fdmg-stock-quote' && pChild?.textContent) {
                 const pChildContent = {
                     name: pChild.nodeName,
                     key: pIdx,
