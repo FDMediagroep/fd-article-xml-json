@@ -62,6 +62,47 @@ function decodeHtml(encodedHtml: string) {
         .replace(/&amp;/g, '&');
 }
 
+function processParagraph(childNode: HTMLElement) {
+    const contents = [];
+    [].slice
+        .call(childNode.childNodes)
+        .forEach((pChild: HTMLElement, pIdx: number) => {
+            if (pChild.nodeName !== 'fdmg-stock-quote' && pChild.textContent) {
+                const pChildContent = {
+                    name: pChild.nodeName,
+                    key: pIdx,
+                    content: pChild.textContent,
+                    attributes: {},
+                };
+                if (
+                    pChild.nodeType !== pChild.TEXT_NODE &&
+                    pChild?.hasAttributes()
+                ) {
+                    [].slice.call(pChild.attributes).forEach((attribute) => {
+                        pChildContent.attributes[attribute.name] =
+                            attribute.value;
+                    });
+                }
+                contents.push(pChildContent);
+            } else if (pChild.nodeName === 'fdmg-stock-quote') {
+                contents.push({
+                    name: pChild.nodeName,
+                    key: pIdx,
+                    isin: innerHTML(pChild, 'fdmg-isin'),
+                    exchange: innerHTML(pChild, 'fdmg-exchange'),
+                    'data-currency': innerHTML(pChild, 'fdmg-data-currency'),
+                    'data-difference': innerHTML(
+                        pChild,
+                        'fdmg-data-difference'
+                    ),
+                    'data-name': innerHTML(pChild, 'fdmg-data-name'),
+                    'data-price': innerHTML(pChild, 'fdmg-data-price'),
+                });
+            }
+        });
+    return contents;
+}
+
 export function parseXMLToJSON(doc: string) {
     const fullJSON = new DOMParser().parseFromString(
         `<xml>${doc}</xml>`,
@@ -80,7 +121,7 @@ export function parseXMLToJSON(doc: string) {
             switch (childNode.nodeName) {
                 case 'fdmg-bulletpoint':
                     articleContentJSON.push({
-                        name: 'fdmg-bulletpoint',
+                        name: childNode.nodeName,
                         key: idx,
                         bullets: decodeHtml(
                             innerHTML(childNode, 'fdmg-content')
@@ -90,7 +131,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-image':
                     articleContentJSON.push({
-                        name: 'fdmg-image',
+                        name: childNode.nodeName,
                         key: idx,
                         caption: innerHTML(childNode, 'fdmg-caption'),
                         fileName: innerHTML(childNode, 'fdmg-filename'),
@@ -99,7 +140,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-infographic':
                     articleContentJSON.push({
-                        name: 'fdmg-infographic',
+                        name: childNode.nodeName,
                         key: idx,
                         src: innerHTML(childNode, 'fdmg-url'),
                         height: childNode.getAttribute('height'),
@@ -122,7 +163,7 @@ export function parseXMLToJSON(doc: string) {
                             }
                         });
                     articleContentJSON.push({
-                        name: 'fdmg-infographic-extended',
+                        name: childNode.nodeName,
                         key: idx,
                         smallImageUrl: responsiveUrl,
                         largeImageUrl: desktopUrl,
@@ -131,7 +172,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-html-embed':
                     articleContentJSON.push({
-                        name: 'fdmg-html-embed',
+                        name: childNode.nodeName,
                         key: idx,
                         dangerouslySetInnerHTML: {
                             __html: innerHTML(childNode, 'fdmg-html-content'),
@@ -140,7 +181,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-instagram':
                     articleContentJSON.push({
-                        name: 'fdmg-instagram',
+                        name: childNode.nodeName,
                         key: idx,
                         type: 'instagram-embed',
                         url: innerHTML(childNode, 'fdmg-url'),
@@ -148,7 +189,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-number-frame':
                     articleContentJSON.push({
-                        name: 'fdmg-number-frame',
+                        name: childNode.nodeName,
                         key: idx,
                         number: innerHTML(childNode, 'fdmg-heading'),
                         description: innerHTML(childNode, 'fdmg-content'),
@@ -156,7 +197,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-pdf':
                     articleContentJSON.push({
-                        name: 'fdmg-pdf',
+                        name: childNode.nodeName,
                         key: idx,
                         fileId: innerHTML(childNode, 'fdmg-id'),
                         fileName: innerHTML(childNode, 'fdmg-filename'),
@@ -165,7 +206,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-quote':
                     articleContentJSON.push({
-                        name: 'fdmg-quote',
+                        name: childNode.nodeName,
                         key: idx,
                         blockquote: innerHTML(childNode, 'fdmg-message'),
                         figcaption: innerHTML(childNode, 'fdmg-author'),
@@ -173,7 +214,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-readmore':
                     articleContentJSON.push({
-                        name: 'fdmg-readmore',
+                        name: childNode.nodeName,
                         key: idx,
                         title: childNode.getAttribute('title'),
                         links: innerHTML(childNode, 'fdmg-content').split('\n'),
@@ -181,7 +222,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-related-link':
                     articleContentJSON.push({
-                        name: 'fdmg-related-link',
+                        name: childNode.nodeName,
                         key: idx,
                         title: innerHTML(childNode, 'fdmg-prefix'),
                         description: innerHTML(childNode, 'fdmg-leadtext'),
@@ -190,7 +231,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-soundcloud':
                     articleContentJSON.push({
-                        name: 'fdmg-soundcloud',
+                        name: childNode.nodeName,
                         key: idx,
                         type: 'soundcloud-embed',
                         url: innerHTML(childNode, 'fdmg-url'),
@@ -198,33 +239,15 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-stack-frame':
                     articleContentJSON.push({
-                        name: 'fdmg-stack-frame',
+                        name: childNode.nodeName,
                         key: idx,
                         title: innerHTML(childNode, 'fdmg-heading'),
                         description: innerHTML(childNode, 'fdmg-content'),
                     });
                     break;
-                case 'fdmg-stock-quote':
-                    articleContentJSON.push({
-                        name: 'fdmg-stock-quote',
-                        key: idx,
-                        isin: innerHTML(childNode, 'fdmg-isin'),
-                        exchange: innerHTML(childNode, 'fdmg-exchange'),
-                        'data-currency': innerHTML(
-                            childNode,
-                            'fdmg-data-currency'
-                        ),
-                        'data-difference': innerHTML(
-                            childNode,
-                            'fdmg-data-difference'
-                        ),
-                        'data-name': innerHTML(childNode, 'fdmg-data-name'),
-                        'data-price': innerHTML(childNode, 'fdmg-data-price'),
-                    });
-                    break;
                 case 'fdmg-summary':
                     articleContentJSON.push({
-                        name: 'fdmg-summary',
+                        name: childNode.nodeName,
                         key: idx,
                         title: childNode.getAttribute('title'),
                         summaries: innerHTML(childNode, 'fdmg-content').split(
@@ -239,7 +262,7 @@ export function parseXMLToJSON(doc: string) {
                         fileName = innerHTML(childNode, 'fdmg-filename');
                     }
                     articleContentJSON.push({
-                        name: 'fdmg-text-frame',
+                        name: childNode.nodeName,
                         key: idx,
                         image: fileName,
                         title: innerHTML(childNode, 'fdmg-heading'),
@@ -252,7 +275,7 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-twitter':
                     articleContentJSON.push({
-                        name: 'fdmg-twitter',
+                        name: childNode.nodeName,
                         key: idx,
                         type: 'twitter-embed',
                         url: innerHTML(childNode, 'fdmg-url'),
@@ -260,21 +283,21 @@ export function parseXMLToJSON(doc: string) {
                     break;
                 case 'fdmg-vimeo':
                     articleContentJSON.push({
-                        name: 'fdmg-vimeo',
+                        name: childNode.nodeName,
                         key: idx,
                         id: innerHTML(childNode, 'fdmg-id'),
                     });
                     break;
                 case 'fdmg-youtube':
                     articleContentJSON.push({
-                        name: 'fdmg-youtube',
+                        name: childNode.nodeName,
                         key: idx,
                         id: innerHTML(childNode, 'fdmg-id'),
                     });
                     break;
                 case 'fdmg-section-break':
                     articleContentJSON.push({
-                        name: 'fdmg-section-break',
+                        name: childNode.nodeName,
                         key: idx,
                         type: innerHTML(childNode, 'type'),
                     });
@@ -286,11 +309,21 @@ export function parseXMLToJSON(doc: string) {
                             // Prevent further processing of empty node
                             return true;
                         }
-                        articleContentJSON.push({
+                        const node = {
                             name: childNode.nodeName,
                             key: idx,
                             content: innerHTML(childNode),
-                        });
+                            contents: [],
+                        };
+                        /**
+                         * Parapgraph has complex processing because it can also contain special inline components.
+                         * We put each element in an array.
+                         */
+                        if (childNode.nodeName === 'p') {
+                            node.contents = processParagraph(childNode);
+                        }
+
+                        articleContentJSON.push(node);
                     } else {
                         console.log(
                             new XMLSerializer().serializeToString(childNode)

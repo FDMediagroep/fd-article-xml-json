@@ -39,28 +39,98 @@ describe('parseXMLToJSON', () => {
                 key: 0,
                 content:
                     'LET OP: Dit artikel bevat een html-embed, er is ook een <a href="https://dev.fd.nl/achtergrond/1328242/alle-verrijking-op-een-rijtje" target="_self" title="" rel="noopener noreferrer">100% native test-artikel</a>.',
+                contents: [
+                    {
+                        attributes: {},
+                        content:
+                            'LET OP: Dit artikel bevat een html-embed, er is ook een ',
+                        key: 0,
+                        name: '#text',
+                    },
+                    {
+                        attributes: {
+                            href: 'https://dev.fd.nl/achtergrond/1328242/alle-verrijking-op-een-rijtje',
+                            rel: 'noopener noreferrer',
+                            target: '_self',
+                            title: '',
+                        },
+                        content: '100% native test-artikel',
+                        key: 1,
+                        name: 'a',
+                    },
+                    {
+                        attributes: {},
+                        content: '.',
+                        key: 2,
+                        name: '#text',
+                    },
+                ],
             },
             {
                 name: 'h2',
                 key: 1,
                 content:
                     'Allereerst hebben we twee paragrafen onder elkaar &lt;p>',
+                contents: [],
             },
             {
                 name: 'p',
                 key: 2,
                 content:
                     '<fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. <fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price>​<fdmg-data-currency>€</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price>​<fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-            },
-            {
-                name: 'fdmg-stock-quote',
-                key: 4,
-                isin: '<fdmg-isin/>',
-                exchange: 'XSHG',
-                'data-currency': 'CNY',
-                'data-difference': '+0,48%',
-                'data-name': 'CHINA-CSI 100 Index',
-                'data-price': '4.001,71',
+                contents: [
+                    {
+                        'data-currency': '$',
+                        'data-difference': '+0,57%',
+                        'data-name': 'Apple',
+                        'data-price': '316,77',
+                        exchange: 'XNAS',
+                        isin: 'US0378331005',
+                        key: 0,
+                        name: 'fdmg-stock-quote',
+                    },
+                    {
+                        attributes: {},
+                        content:
+                            ' Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. ',
+                        key: 1,
+                        name: '#text',
+                    },
+                    {
+                        'data-currency': '€',
+                        'data-difference': '+0,47%',
+                        'data-name': 'ING Groep',
+                        'data-price': '7,63',
+                        exchange: 'XAMS',
+                        isin: 'NL0011821202',
+                        key: 2,
+                        name: 'fdmg-stock-quote',
+                    },
+                    {
+                        attributes: {},
+                        content:
+                            ' Curabitur blandit tempus porttitor. Integer ',
+                        key: 3,
+                        name: '#text',
+                    },
+                    {
+                        'data-currency': '$',
+                        'data-difference': '-0,53%',
+                        'data-name': 'Sony Corp',
+                        'data-price': '63,73',
+                        exchange: 'XNYS',
+                        isin: 'US8356993076',
+                        key: 4,
+                        name: 'fdmg-stock-quote',
+                    },
+                    {
+                        attributes: {},
+                        content:
+                            ' posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                        key: 5,
+                        name: '#text',
+                    },
+                ],
             },
         ];
         const actual = parseXMLToJSON(xmlString);
