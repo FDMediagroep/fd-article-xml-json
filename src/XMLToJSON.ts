@@ -28,6 +28,12 @@ interface fdmgObject {
     descriptions?: string[];
     id?: string;
     content?: string;
+    isin?: string;
+    exchange?: string;
+    'data-difference'?: string;
+    'data-name'?: string;
+    'data-price'?: string;
+    'data-currency'?: string;
 }
 
 function innerHTML(node: Element, tagName?: string) {
@@ -196,6 +202,24 @@ export function parseXMLToJSON(doc: string) {
                         key: idx,
                         title: innerHTML(childNode, 'fdmg-heading'),
                         description: innerHTML(childNode, 'fdmg-content'),
+                    });
+                    break;
+                case 'fdmg-stock-quote':
+                    articleContentJSON.push({
+                        name: 'fdmg-stock-quote',
+                        key: idx,
+                        isin: innerHTML(childNode, 'fdmg-isin'),
+                        exchange: innerHTML(childNode, 'fdmg-exchange'),
+                        'data-currency': innerHTML(
+                            childNode,
+                            'fdmg-data-currency'
+                        ),
+                        'data-difference': innerHTML(
+                            childNode,
+                            'fdmg-data-difference'
+                        ),
+                        'data-name': innerHTML(childNode, 'fdmg-data-name'),
+                        'data-price': innerHTML(childNode, 'fdmg-data-price'),
                     });
                     break;
                 case 'fdmg-summary':
