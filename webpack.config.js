@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 const path = require('path');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
@@ -87,9 +88,19 @@ module.exports = {
                 },
             ],
         }),
+        new FileManagerPlugin({
+            events: {
+                onEnd: {
+                    move: [
+                        { source: './dist/src/*.d.ts', destination: './dist/' },
+                    ],
+                    delete: ['./dist/src'],
+                },
+            },
+        }),
     ],
     externals: {
-        xmldom: 'xmldom'
+        xmldom: 'xmldom',
     },
     module: {
         strictExportPresence: true,
