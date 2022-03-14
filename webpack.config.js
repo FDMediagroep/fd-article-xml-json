@@ -88,16 +88,16 @@ module.exports = {
                 },
             ],
         }),
-        new FileManagerPlugin({
-            events: {
-                onEnd: {
-                    move: [
-                        { source: './dist/src/*.d.ts', destination: './dist/' },
-                    ],
-                    delete: ['./dist/src'],
-                },
-            },
-        }),
+        // new FileManagerPlugin({
+        //     events: {
+        //         onEnd: {
+        //             move: [
+        //                 { source: './dist/src/*.d.ts', destination: './dist/' },
+        //             ],
+        //             delete: ['./dist/src'],
+        //         },
+        //     },
+        // }),
     ],
     externals: {
         xmldom: 'xmldom',
