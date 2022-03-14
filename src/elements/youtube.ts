@@ -1,11 +1,11 @@
-import { fdmgObject, findElement } from "./utils";
+import { fdmgObject, findElement } from '../utils';
 
 export interface fdmgYoutube extends fdmgObject {
-  id?: string;
+    id?: string;
 }
 export const getYoutube = (element: fdmgObject): fdmgYoutube => {
-  return {
-    name: element.name,
-    id: findElement(element.children, 'fdmg-id'),
-  }
-}
+    return {
+        name: element.name,
+        id: findElement(element.children, 'fdmg-id'),
+    };
+};

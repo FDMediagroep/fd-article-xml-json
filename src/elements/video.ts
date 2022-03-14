@@ -1,11 +1,11 @@
-import { fdmgObject, findElement } from "./utils";
+import { fdmgObject, findElement } from '../utils';
 
 export interface fdmgVimeo extends fdmgObject {
-  id?: string;
+    id?: string;
 }
 export const getVimeo = (element: fdmgObject): fdmgVimeo => {
-  return {
-    name: element.name,
-    id: findElement(element.children, 'fdmg-id'),
-  }
-}
+    return {
+        name: element.name,
+        id: findElement(element.children, 'fdmg-id'),
+    };
+};

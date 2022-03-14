@@ -1,11 +1,11 @@
-import { fdmgObject, findElement } from "./utils";
+import { fdmgObject, findElement } from '../utils';
 
 export interface fdmgSoundcloud extends fdmgObject {
-  url?: string;
+    url?: string;
 }
 export const getSoundcloud = (element: fdmgObject): fdmgSoundcloud => {
-  return {
-    name: element.name,
-    url: findElement(element.children, 'fdmg-url'),
-  }
-}
+    return {
+        name: element.name,
+        url: findElement(element.children, 'fdmg-url'),
+    };
+};

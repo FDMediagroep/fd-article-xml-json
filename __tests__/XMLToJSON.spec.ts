@@ -1,4 +1,5 @@
 // import { parseXML } from '../src';
+import { fdmgImage } from '../src/elements/image';
 import { parseXML } from '../src/XMLToJSON';
 
 describe('parseXML', () => {
@@ -8,12 +9,14 @@ describe('parseXML', () => {
 
         const expected = [
             {
-                // 'alt-text': '',
-                caption:
-                    'Samuel L. Jackson in de film ‘The Hitman’s Bodyguard’. De film was een casus om het illegaal downloaden in Nederland aan te pakken.',
+                alignment: 'right',
+                altText: '',
+                caption: 'Samuel L. Jackson in de film ‘The Hitman’s Bodyguard’. De film was een casus om het illegaal downloaden in Nederland aan te pakken.',
                 credit: 'Foto: Robin Utrecht/ ANP',
                 fileName: '8x7uqOBFjKerF2nK8M0MzMOqjt4.jpg',
+                height: '2756',
                 name: 'fdmg-image',
+                width: '4134',
             },
             {
                 name: 'fdmg-summary',
@@ -35,11 +38,14 @@ describe('parseXML', () => {
 
         const expected = [
             {
-                'alt-text': undefined,
-                caption: undefined,
+                alignment: 'right',
+                altText: '',
+                caption: '',
                 credit: 'Foto: Robin Utrecht/ ANP',
                 fileName: '8x7uqOBFjKerF2nK8M0MzMOqjt4.jpg',
+                height: '2756',
                 name: 'fdmg-image',
+                width: '4134',
             },
             {
                 name: 'fdmg-summary',
@@ -64,7 +70,7 @@ describe('parseXML', () => {
                 name: 'p',
                 content:
                     'LET OP: Dit artikel bevat een html-embed, er is ook een <a href="https://dev.fd.nl/achtergrond/1328242/alle-verrijking-op-een-rijtje" target="_self" title="" rel="noopener noreferrer">100% native test-artikel</a>.',
-                contents: [
+                children: [
                     {
                         content:
                             'LET OP: Dit artikel bevat een html-embed, er is ook een ',
@@ -89,14 +95,13 @@ describe('parseXML', () => {
             {
                 name: 'h2',
                 content:
-                    'Allereerst hebben we twee paragrafen onder elkaar &lt;p>',
-                contents: [],
+                    'Allereerst hebben we twee paragrafen onder elkaar <p>',
             },
             {
                 name: 'p',
                 content:
                     '<fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency></fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. <fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price><fdmg-data-currency>€</fdmg-data-currency></fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency></fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-                contents: [
+                children: [
                     {
                         'dataCurrency': '$',
                         'dataDifference': '+0,57%',
@@ -140,6 +145,15 @@ describe('parseXML', () => {
                         name: '#text',
                     },
                 ],
+            },
+            {
+                name: 'fdmg-stock-quote',
+                dataCurrency: 'CNY',
+                dataDifference: '+0,48%',
+                dataName: 'CHINA-CSI 100 Index',
+                dataPrice: '4.001,71',
+                exchange: 'XSHG',
+                isin: '',
             },
         ];
         const actual = parseXML(xmlString);

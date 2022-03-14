@@ -1,5 +1,5 @@
 import { parseXML } from './XMLToJSON';
-import { fdmgObject } from './elements/utils';
+import { fdmgObject } from './utils';
 
 import { fdmgAudio } from './elements/audio';
 import { fdmgBulletPoints } from './elements/bulletPoints';
@@ -24,27 +24,27 @@ import { fdmgVimeo } from './elements/video';
 import { fdmgYoutube } from './elements/youtube';
 
 export {
-  parseXML,
-  fdmgObject,
-  fdmgAudio,
-  fdmgBulletPoints,
-  fdmgHtmlEmbed,
-  fdmgImage,
-  fdmgInfographic,
-  fdmgInfographicExtended,
-  fdmgInstagram,
-  fdmgNumberFrame,
-  fdmgPdf,
-  fdmgQuote,
-  fdmgReadmore,
-  fdmgRelatedLink,
-  fdmgSectionBreak,
-  fdmgSoundcloud,
-  fdmgStackFrame,
-  fdmgStockQuote,
-  fdmgSummary,
-  fdmgTextFrame,
-  fdmgTwitter,
-  fdmgVimeo,
-  fdmgYoutube,
+    parseXML,
+    fdmgObject,
+    fdmgAudio,
+    fdmgBulletPoints,
+    fdmgHtmlEmbed,
+    fdmgImage,
+    fdmgInfographic,
+    fdmgInfographicExtended,
+    fdmgInstagram,
+    fdmgNumberFrame,
+    fdmgPdf,
+    fdmgQuote,
+    fdmgReadmore,
+    fdmgRelatedLink,
+    fdmgSectionBreak,
+    fdmgSoundcloud,
+    fdmgStackFrame,
+    fdmgStockQuote,
+    fdmgSummary,
+    fdmgTextFrame,
+    fdmgTwitter,
+    fdmgVimeo,
+    fdmgYoutube,
 };

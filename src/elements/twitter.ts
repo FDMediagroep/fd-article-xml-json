@@ -1,11 +1,11 @@
-import { fdmgObject, findElement } from "./utils";
+import { fdmgObject, findElement } from '../utils';
 
 export interface fdmgTwitter extends fdmgObject {
-  url?: string;
+    url?: string;
 }
 export const getTwitter = (element: fdmgObject): fdmgTwitter => {
-  return {
-    name: element.name,
-    url: findElement(element.children, 'fdmg-url'),
-  }
-}
+    return {
+        name: element.name,
+        url: findElement(element.children, 'fdmg-url'),
+    };
+};

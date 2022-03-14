@@ -1,11 +1,11 @@
-import { fdmgObject, findElement } from "./utils";
+import { fdmgObject, findElement } from '../utils';
 
 export interface fdmgSectionBreak extends fdmgObject {
-  type?: string;
+    type?: string;
 }
 export const getSectionBreak = (element: fdmgObject): fdmgSectionBreak => {
-  return {
-    name: element.name,
-    type: findElement(element.children, 'fdmg-type'),
-  }
-}
+    return {
+        name: element.name,
+        type: findElement(element.children, 'fdmg-type'),
+    };
+};
