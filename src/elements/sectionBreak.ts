@@ -6,6 +6,6 @@ export interface fdmgSectionBreak extends fdmgObject {
 export const getSectionBreak = (element: fdmgObject): fdmgSectionBreak => {
     return {
         name: element.name,
-        type: findElement(element.children, 'fdmg-type'),
+        type: element.attributes?.type,
     };
 };
