@@ -1,4 +1,4 @@
-import { fdmgObject, findElement } from '../utils';
+import { fdmgObject } from '../utils';
 
 export interface fdmgSectionBreak extends fdmgObject {
     type?: string;

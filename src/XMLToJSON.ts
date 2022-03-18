@@ -100,7 +100,7 @@ const mapElement = (element: ChildNode): fdmgObject => {
         return getInfographicExtended(node);
     } else if (node.name === 'fdmg-html-embed') {
         return getHtmlEmbed(node);
-    } else if (node.name === 'fdmg-instragram') {
+    } else if (node.name === 'fdmg-instagram') {
         return getInstagram(node);
     } else if (node.name === 'fdmg-number-frame') {
         return getNumberFrame(node);
