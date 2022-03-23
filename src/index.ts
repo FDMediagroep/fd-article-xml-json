@@ -20,7 +20,7 @@ import { fdmgStockQuote } from './elements/stockQuote';
 import { fdmgSummary } from './elements/summary';
 import { fdmgTextFrame } from './elements/textFrame';
 import { fdmgTwitter } from './elements/twitter';
-import { fdmgVimeo } from './elements/video';
+import { fdmgVimeo } from './elements/vimeo';
 import { fdmgYoutube } from './elements/youtube';
 
 export {
