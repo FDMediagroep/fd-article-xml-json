@@ -20,7 +20,7 @@ import { getStockQuote } from './elements/stockQuote';
 import { getSummary } from './elements/summary';
 import { getTextFrame } from './elements/textFrame';
 import { getTwitter } from './elements/twitter';
-import { getVimeo } from './elements/video';
+import { getVimeo } from './elements/vimeo';
 import { getYoutube } from './elements/youtube';
 
 export const parseXML = (xmlString: string) => {

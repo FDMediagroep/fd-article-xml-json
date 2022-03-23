@@ -1,6 +1,4 @@
-// import { parseXML } from '../src';
-import { fdmgImage } from '../src/elements/image';
-import { parseXML } from '../src/XMLToJSON';
+import { parseXML } from '../src';
 
 describe('parseXML', () => {
     it('should return a json with image and summary', () => {
