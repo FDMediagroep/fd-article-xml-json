@@ -1,5 +1,5 @@
-import { parseXMLToJSON } from '../src';
+import { parseXML } from '../src';
 
 test('XMLToJSON is exported', () => {
-    expect(parseXMLToJSON).toBeInstanceOf(Object);
+    expect(parseXML).toBeInstanceOf(Object);
 });

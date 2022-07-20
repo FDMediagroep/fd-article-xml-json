@@ -12,6 +12,7 @@
         "lint": "eslint \"src/**\"",
         "prettier": "prettier -c **/*.ts",
         "test": "concurrently \"jest\" \"npm run lint\" \"npm run prettier\"",
+        "test:watch": "jest --watch",
         "watch": "npm run webpack:dev -- --watch",
         "webpack": "cross-env WEBPACK_BUNDLE_ANALYZER=true NODE_ENV=production webpack --mode=production",
         "webpack:dev": "cross-env NODE_ENV=development webpack --mode=development"
@@ -19,6 +20,7 @@
     "author": "DirkVanDerStraaten",
     "license": "ISC",
     "devDependencies": {
+        "@types/xmldom": "^0.1.31",
         "@types/jest": "^28.1.6",
         "@typescript-eslint/eslint-plugin": "^5.30.7",
         "@typescript-eslint/parser": "^5.30.7",
