@@ -19,7 +19,7 @@
     "author": "DirkVanDerStraaten",
     "license": "ISC",
     "devDependencies": {
-        "@types/jest": "^28.1.7",
+        "@types/jest": "^28.1.8",
         "@typescript-eslint/eslint-plugin": "^5.34.0",
         "@typescript-eslint/parser": "^5.34.0",
         "concurrently": "^7.3.0",
