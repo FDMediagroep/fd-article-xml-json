@@ -193,6 +193,18 @@ describe('parseXML', () => {
 
         expect(actual).toEqual(expect.arrayContaining(expected));
     });
+    it('should return a json with hr', () => {
+        const xmlString = '<fdmg-hr/>';
+
+        const expected = [
+            {
+                name: 'fdmg-hr',
+            },
+        ];
+        const actual = parseXML(xmlString);
+
+        expect(actual).toEqual(expected);
+    });
     it('should return a json with infographic extended', () => {
         const xmlString =
             '<fdmg-infographic-extended><graphic view="responsive" name="Mobile.svg" url="https://fd-external-development.imgix.net/d2d6138666864d50b506ca1dd5a0ecdb.png"/><graphic view="desktop" name="medium.svg" url="https://fd-external-development.imgix.net/cafecf28e8b04467ab75532b273cd6ef.png"/><graphic view="xl" name="Large.svg" url="https://fd-external-development.imgix.net/5e0594906a214cd28bf106cfa78b4520.png"/></fdmg-infographic-extended>';

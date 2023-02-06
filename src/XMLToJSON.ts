@@ -22,6 +22,7 @@ import { getTextFrame } from './elements/textFrame';
 import { getTwitter } from './elements/twitter';
 import { getVimeo } from './elements/vimeo';
 import { getYoutube } from './elements/youtube';
+import { getHR } from './elements/hr';
 
 export const parseXML = (xmlString: string) => {
     const fullJSON = new DOMParser().parseFromString(
@@ -80,6 +81,8 @@ const mapElement = (element: ChildNode): fdmgObject => {
 
     if (node.name === 'fdmg-bulletpoint') {
         return getBulletPoints(node);
+    } else if (node.name === 'fdmg-hr') {
+        return getHR(node);
     } else if (node.name === 'fdmg-image') {
         return getImage(node);
     } else if (node.name === 'fdmg-pdf') {
