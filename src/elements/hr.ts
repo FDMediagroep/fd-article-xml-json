@@ -1,4 +1,4 @@
-import { fdmgObject, findElement } from '../utils';
+import { fdmgObject } from '../utils';
 
 export interface fdmgHR extends fdmgObject {
     id?: string;
@@ -6,6 +6,5 @@ export interface fdmgHR extends fdmgObject {
 export const getHR = (element: fdmgObject): fdmgHR => {
     return {
         name: element.name,
-        id: findElement(element.children, 'fdmg-hr'),
     };
 };
