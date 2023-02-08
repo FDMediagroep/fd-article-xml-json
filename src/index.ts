@@ -22,12 +22,14 @@ import { fdmgTextFrame } from './elements/textFrame';
 import { fdmgTwitter } from './elements/twitter';
 import { fdmgVimeo } from './elements/vimeo';
 import { fdmgYoutube } from './elements/youtube';
+import { fdmgHR } from './elements/hr';
 
 export {
     parseXML,
     fdmgObject,
     fdmgAudio,
     fdmgBulletPoints,
+    fdmgHR,
     fdmgHtmlEmbed,
     fdmgImage,
     fdmgInfographic,
