@@ -23,6 +23,7 @@ import { getTwitter } from './elements/twitter';
 import { getVimeo } from './elements/vimeo';
 import { getYoutube } from './elements/youtube';
 import { getHR } from './elements/hr';
+import { getLiveblog } from './elements/liveblog';
 
 export const parseXML = (xmlString: string) => {
     const fullJSON = new DOMParser().parseFromString(
@@ -85,6 +86,8 @@ const mapElement = (element: ChildNode): fdmgObject => {
         return getHR(node);
     } else if (node.name === 'fdmg-image') {
         return getImage(node);
+    } else if (node.name === 'fdmg-liveblog') {
+        return getLiveblog(node);
     } else if (node.name === 'fdmg-pdf') {
         return getPdf(node);
     } else if (node.name === 'fdmg-audio') {

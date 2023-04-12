@@ -23,6 +23,7 @@ import { fdmgTwitter } from './elements/twitter';
 import { fdmgVimeo } from './elements/vimeo';
 import { fdmgYoutube } from './elements/youtube';
 import { fdmgHR } from './elements/hr';
+import { fdmgLiveblog } from './elements/liveblog';
 
 export {
     parseXML,
@@ -35,6 +36,7 @@ export {
     fdmgInfographic,
     fdmgInfographicExtended,
     fdmgInstagram,
+    fdmgLiveblog,
     fdmgNumberFrame,
     fdmgPdf,
     fdmgQuote,

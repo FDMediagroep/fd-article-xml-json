@@ -224,6 +224,22 @@ describe('parseXML', () => {
 
         expect(actual).toEqual(expected);
     });
+    it('should return a json with a liveblog', () => {
+        const xmlString =
+            '<fdmg-liveblog><fdmg-time>11:55</fdmg-time><fdmg-title>Lorem Ipsum, FDMG-Liveblog</fdmg-title><fdmg-anchor-id>fdmg-liveblog-anchor</fdmg-anchor-id></fdmg-liveblog>';
+
+        const expected = [
+            {
+                name: 'fdmg-liveblog',
+                time: '11:55',
+                title: 'Lorem Ipsum, FDMG-Liveblog',
+                anchorId: 'fdmg-liveblog-anchor',
+            },
+        ];
+        const actual = parseXML(xmlString);
+
+        expect(actual).toEqual(expected);
+    });
     it('should return a json with stackframe', () => {
         const xmlString =
             '<fdmg-stack-frame><fdmg-heading>Maecenas faucibus mollis interdum.</fdmg-heading><fdmg-content>Nullam quis risus eget urna mollis ornare vel eu leo. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Nullam quis risus eget urna mollis ornare vel eu leo. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec sed odio dui. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</fdmg-content></fdmg-stack-frame>';
