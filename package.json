@@ -4,6 +4,10 @@
     "description": "parses fdmg-xml to article-json",
     "main": "index.js",
     "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:FDMediagroep/fd-article-xml-json.git"
+    },
     "publishConfig": {
         "access": "public"
     },
