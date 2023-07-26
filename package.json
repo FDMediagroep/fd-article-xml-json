@@ -1,6 +1,6 @@
 {
     "name": "@fdmg/article-xml-json",
-    "version": "1.0.23",
+    "version": "1.0.24",
     "description": "parses fdmg-xml to article-json",
     "main": "index.js",
     "types": "index.d.ts",
@@ -24,8 +24,8 @@
     "license": "ISC",
     "devDependencies": {
         "@types/jest": "^29.5.3",
-        "@typescript-eslint/eslint-plugin": "^6.1.0",
-        "@typescript-eslint/parser": "^6.1.0",
+        "@typescript-eslint/eslint-plugin": "^6.2.0",
+        "@typescript-eslint/parser": "^6.2.0",
         "concurrently": "^8.2.0",
         "copy-webpack-plugin": "^11.0.0",
         "cross-env": "^7.0.3",
