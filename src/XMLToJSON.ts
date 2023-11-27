@@ -1,4 +1,4 @@
-import { XMLSerializer, DOMParser } from 'xmldom';
+import { XMLSerializer, DOMParser } from '@xmldom/xmldom';
 
 interface fdmgObject {
     name: string;

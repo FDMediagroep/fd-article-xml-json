@@ -100,7 +100,7 @@ module.exports = {
         }),
     ],
     externals: {
-        xmldom: 'xmldom',
+        xmldom: '@xmldom/xmldom',
     },
     module: {
         strictExportPresence: true,
