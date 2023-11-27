@@ -1,5 +1,5 @@
-import { XMLSerializer, DOMParser } from 'xmldom';
 import { Attributes, fdmgObject } from './utils';
+import { XMLSerializer, DOMParser } from '@xmldom/xmldom';
 
 import { getAudio } from './elements/audio';
 import { getBulletPoints } from './elements/bulletPoints';
