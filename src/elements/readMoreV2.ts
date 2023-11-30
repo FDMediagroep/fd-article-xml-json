@@ -5,7 +5,6 @@ export interface fdmgReadmoreV2 extends fdmgObject {
     links?: string[];
 }
 export const getReadmoreV2 = (element: fdmgObject): fdmgReadmoreV2 => {
-    console.log(JSON.stringify(element, null, 2));
     return {
         name: element.name,
         title: element.attributes?.title,
