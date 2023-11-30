@@ -12,6 +12,7 @@ import { fdmgNumberFrame } from './elements/numberFrame';
 import { fdmgPdf } from './elements/pdf';
 import { fdmgQuote } from './elements/quote';
 import { fdmgReadmore } from './elements/readMore';
+import { fdmgReadmoreV2 } from './elements/readMoreV2';
 import { fdmgRelatedLink } from './elements/relatedLink';
 import { fdmgSectionBreak } from './elements/sectionBreak';
 import { fdmgSoundcloud } from './elements/soundCloud';
@@ -40,6 +41,7 @@ export {
     fdmgNumberFrame,
     fdmgPdf,
     fdmgQuote,
+    fdmgReadmoreV2,
     fdmgReadmore,
     fdmgRelatedLink,
     fdmgSectionBreak,

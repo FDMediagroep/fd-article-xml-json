@@ -12,6 +12,7 @@ import { getNumberFrame } from './elements/numberFrame';
 import { getPdf } from './elements/pdf';
 import { getQuote } from './elements/quote';
 import { getReadmore } from './elements/readMore';
+import { getReadmoreV2 } from './elements/readMoreV2';
 import { getRelatedLink } from './elements/relatedLink';
 import { getSectionBreak } from './elements/sectionBreak';
 import { getSoundcloud } from './elements/soundCloud';
@@ -112,6 +113,8 @@ const mapElement = (element: ChildNode): fdmgObject => {
         return getNumberFrame(node);
     } else if (node.name === 'fdmg-readmore') {
         return getReadmore(node);
+    } else if (node.name === 'fdmg-readmore-v2') {
+        return getReadmoreV2(node);
     } else if (node.name === 'fdmg-related-link') {
         return getRelatedLink(node);
     } else if (node.name === 'fdmg-soundcloud') {

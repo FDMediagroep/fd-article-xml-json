@@ -313,6 +313,25 @@ describe('parseXML', () => {
 
         expect(actual).toEqual(expected);
     });
+    it('should return a json with readmorev2', () => {
+        const xmlString =
+            '<fdmg-readmore-v2 title="Lees ook deze artikelen"><fdmg-content>https://www.bnr.nl/column/economie/10533486/motoren-van-de-nederlandse-economie-draaien-niet\nhttps://www.bnr.nl/nieuws/politiek/10533583/vvd-bijeenkomst-koude-douche-voor-fractie-en-yesilgoz\nhttps://www.bnr.nl/nieuws/internationaal/10533487/bulgarije-dwarsboomt-rusland-lavrov-in-hemd-gezet</fdmg-content></fdmg-readmore-v2>';
+
+        const expected = [
+            {
+                name: 'fdmg-readmore-v2',
+                title: 'Lees ook deze artikelen',
+                links: [
+                    'https://www.bnr.nl/column/economie/10533486/motoren-van-de-nederlandse-economie-draaien-niet',
+                    'https://www.bnr.nl/nieuws/politiek/10533583/vvd-bijeenkomst-koude-douche-voor-fractie-en-yesilgoz',
+                    'https://www.bnr.nl/nieuws/internationaal/10533487/bulgarije-dwarsboomt-rusland-lavrov-in-hemd-gezet',
+                ],
+            },
+        ];
+        const actual = parseXML(xmlString);
+
+        expect(actual).toEqual(expected);
+    });
     it('should return a json with pdf-link', () => {
         const xmlString =
             '<fdmg-pdf><fdmg-id>MTUyLDcwLDIyLDIwMw</fdmg-id><fdmg-filename>2AFdDR9F_TFVY0GWm9RecMYQNUw.pdf</fdmg-filename><fdmg-title>1200px-Logo_Het_Financieele_Dagblad.pdf</fdmg-title></fdmg-pdf>';
