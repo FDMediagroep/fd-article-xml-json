@@ -95,7 +95,6 @@ describe('parseXML', () => {
                 name: 'h2',
                 content:
                     'Allereerst hebben we twee paragrafen onder elkaar <p>',
-                contents: [],
             },
         ];
         const actual = parseXML(xmlString);
