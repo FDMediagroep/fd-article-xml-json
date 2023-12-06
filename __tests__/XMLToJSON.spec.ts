@@ -70,7 +70,7 @@ describe('parseXMLToJSON', () => {
                 name: 'h2',
                 key: 1,
                 content:
-                    'Allereerst hebben we twee paragrafen onder elkaar &lt;p>',
+                    'Allereerst hebben we twee paragrafen onder elkaar &lt;p&gt;',
                 contents: [],
             },
             {
@@ -363,7 +363,7 @@ describe('parseXMLToJSON', () => {
                 name: 'fdmg-html-embed',
                 key: 0,
                 dangerouslySetInnerHTML: {
-                    __html: '&lt;iframe height="277" width="100%" src="https://static-dev.bnr.nl/audio-widget-v2/index.html?podcast=https://dev.bnr.nl/podcast/amerikapodcast/json&amp;showSponsor=true&amp;colors=#FFD200,#ffffff,#000000,#FFD200,#FFD200,#000000,#000000" frameBorder="0" scrolling="no"/>',
+                    __html: '&lt;iframe height="277" width="100%" src="https://static-dev.bnr.nl/audio-widget-v2/index.html?podcast=https://dev.bnr.nl/podcast/amerikapodcast/json&amp;showSponsor=true&amp;colors=#FFD200,#ffffff,#000000,#FFD200,#FFD200,#000000,#000000" frameBorder="0" scrolling="no"/&gt;',
                 },
             },
         ];
