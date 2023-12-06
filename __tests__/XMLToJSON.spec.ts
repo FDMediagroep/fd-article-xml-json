@@ -31,7 +31,7 @@ describe('parseXMLToJSON', () => {
     });
     it('should return a json with html strings and stockquotes', () => {
         const xmlString =
-            '<p>LET OP: Dit artikel bevat een html-embed, er is ook een <a href="https://dev.fd.nl/achtergrond/1328242/alle-verrijking-op-een-rijtje" target="_self" title="" rel="noopener noreferrer">100% native test-artikel</a>.</p><h2>Allereerst hebben we twee paragrafen onder elkaar &lt;p&gt;</h2><p><fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. <fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price>​<fdmg-data-currency>€</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price>​<fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p><fdmg-stock-quote><fdmg-isin /><fdmg-exchange>XSHG</fdmg-exchange><fdmg-data-difference>+0,48%</fdmg-data-difference><fdmg-data-name>CHINA-CSI 100 Index</fdmg-data-name><fdmg-data-price>4.001,71</fdmg-data-price>​<fdmg-data-currency>CNY</fdmg-data-currency>​</fdmg-stock-quote>';
+            '<p>LET OP: Dit artikel bevat een html-embed, er is ook een <a href="https://dev.fd.nl/achtergrond/1328242/alle-verrijking-op-een-rijtje" target="_self" title="" rel="noopener noreferrer">100% native test-artikel</a>.</p><h2>Allereerst hebben we twee paragrafen onder elkaar &lt;p&gt;</h2><p><fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. <fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price>​<fdmg-data-currency>€</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price>​<fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><p><fdmg-stock-quote><fdmg-isin /><fdmg-exchange>XSHG</fdmg-exchange><fdmg-data-difference>+0,48%</fdmg-data-difference><fdmg-data-name>CHINA-CSI 100 Index</fdmg-data-name><fdmg-data-price>4.001,71</fdmg-data-price>​<fdmg-data-currency>CNY</fdmg-data-currency>​</fdmg-stock-quote></p>';
 
         const expected = [
             {
@@ -129,6 +129,24 @@ describe('parseXMLToJSON', () => {
                             ' posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                         key: 5,
                         name: '#text',
+                    },
+                ],
+            },
+            {
+                key: 3,
+                name: 'p',
+                content:
+                    '<fdmg-stock-quote><fdmg-isin/><fdmg-exchange>XSHG</fdmg-exchange><fdmg-data-difference>+0,48%</fdmg-data-difference><fdmg-data-name>CHINA-CSI 100 Index</fdmg-data-name><fdmg-data-price>4.001,71</fdmg-data-price>​<fdmg-data-currency>CNY</fdmg-data-currency>​</fdmg-stock-quote>',
+                contents: [
+                    {
+                        'data-currency': 'CNY',
+                        'data-difference': '+0,48%',
+                        'data-name': 'CHINA-CSI 100 Index',
+                        'data-price': '4.001,71',
+                        exchange: 'XSHG',
+                        isin: '<fdmg-isin/>',
+                        key: 0,
+                        name: 'fdmg-stock-quote',
                     },
                 ],
             },
