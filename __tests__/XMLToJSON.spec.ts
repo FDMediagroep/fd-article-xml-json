@@ -60,9 +60,9 @@ describe('parseXML', () => {
 
         expect(actual).toEqual(expected);
     });
-    it('should return a json with html strings and stockquotes', () => {
+    it('should return a json with html strings and stockquotes #1', () => {
         const xmlString =
-            '<p>LET OP: Dit artikel bevat een html-embed, er is ook een <a href="https://dev.fd.nl/achtergrond/1328242/alle-verrijking-op-een-rijtje" target="_self" title="" rel="noopener noreferrer">100% native test-artikel</a>.</p><h2>Allereerst hebben we twee paragrafen onder elkaar &lt;p&gt;</h2><p><fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency></fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. <fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price><fdmg-data-currency>€</fdmg-data-currency></fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency></fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><fdmg-stock-quote><fdmg-isin /><fdmg-exchange>XSHG</fdmg-exchange><fdmg-data-difference>+0,48%</fdmg-data-difference><fdmg-data-name>CHINA-CSI 100 Index</fdmg-data-name><fdmg-data-price>4.001,71</fdmg-data-price><fdmg-data-currency>CNY</fdmg-data-currency></fdmg-stock-quote>';
+            '<p>LET OP: Dit artikel bevat een html-embed, er is ook een <a href="https://dev.fd.nl/achtergrond/1328242/alle-verrijking-op-een-rijtje" target="_self" title="" rel="noopener noreferrer">100% native test-artikel</a>.</p><h2>Allereerst hebben we twee paragrafen onder elkaar &lt;p&gt;</h2>';
 
         const expected = [
             {
@@ -96,10 +96,19 @@ describe('parseXML', () => {
                 content:
                     'Allereerst hebben we twee paragrafen onder elkaar <p>',
             },
+        ];
+        const actual = parseXML(xmlString);
+        expect(actual).toEqual(expected);
+    });
+    it('should return a json with html strings and stockquotes #2', () => {
+        const xmlString =
+            '<xml><fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>&#36;</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada mollis euismod. Curabitur blandit tempus porttitor.</xml>';
+
+        const expected = [
             {
-                name: 'p',
+                name: 'xml',
                 content:
-                    '<fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency></fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. <fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price><fdmg-data-currency>€</fdmg-data-currency></fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency></fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                    '<fdmg-stock-quote><fdmg-isin>US0378331005</fdmg-isin><fdmg-exchange>XNAS</fdmg-exchange><fdmg-data-difference>+0,57%</fdmg-data-difference><fdmg-data-name>Apple</fdmg-data-name><fdmg-data-price>316,77</fdmg-data-price><fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Etiam porta sem malesuada mollis euismod. Curabitur blandit tempus porttitor.',
                 children: [
                     {
                         dataCurrency: '$',
@@ -112,9 +121,25 @@ describe('parseXML', () => {
                     },
                     {
                         content:
-                            ' Curabitur blandit tempus porttitor. Etiam porta sem malesuada magna mollis euismod. Curabitur blandit tempus porttitor. ',
+                            ' Curabitur blandit tempus porttitor. Etiam porta sem malesuada mollis euismod. Curabitur blandit tempus porttitor.',
                         name: '#text',
                     },
+                ],
+            },
+        ];
+        const actual = parseXML(xmlString);
+        expect(actual).toMatchObject(expected);
+    });
+    it('should return a json with html strings and stockquotes #3', () => {
+        const xmlString =
+            '<xml><fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price>​<fdmg-data-currency>€</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price>​<fdmg-data-currency>&#36;</fdmg-data-currency>​</fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</xml>';
+
+        const expected = [
+            {
+                name: 'xml',
+                content:
+                    '<fdmg-stock-quote><fdmg-isin>NL0011821202</fdmg-isin><fdmg-exchange>XAMS</fdmg-exchange><fdmg-data-difference>+0,47%</fdmg-data-difference><fdmg-data-name>ING Groep</fdmg-data-name><fdmg-data-price>7,63</fdmg-data-price>​<fdmg-data-currency>€</fdmg-data-currency>​</fdmg-stock-quote> Curabitur blandit tempus porttitor. Integer <fdmg-stock-quote><fdmg-isin>US8356993076</fdmg-isin><fdmg-exchange>XNYS</fdmg-exchange><fdmg-data-difference>-0,53%</fdmg-data-difference><fdmg-data-name>Sony Corp</fdmg-data-name><fdmg-data-price>63,73</fdmg-data-price>​<fdmg-data-currency>$</fdmg-data-currency>​</fdmg-stock-quote> posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                children: [
                     {
                         dataCurrency: '€',
                         dataDifference: '+0,47%',
@@ -140,19 +165,35 @@ describe('parseXML', () => {
                     },
                     {
                         content:
-                            ' posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+                            ' posuere erat a ante venenatis dapibus posuere velit aliquet. Maecenas sed diam eget risus varius blandit sit amet non. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
                         name: '#text',
                     },
                 ],
             },
+        ];
+        const actual = parseXML(xmlString);
+        expect(actual).toEqual(expected);
+    });
+    it('should return a json with html strings and stockquotes #4', () => {
+        const xmlString =
+            '<p><fdmg-stock-quote><fdmg-isin /><fdmg-exchange>XSHG</fdmg-exchange><fdmg-data-difference>+0,48%</fdmg-data-difference><fdmg-data-name>CHINA-CSI 100 Index</fdmg-data-name><fdmg-data-price>4.001,71</fdmg-data-price>​<fdmg-data-currency>CNY</fdmg-data-currency>​</fdmg-stock-quote></p>';
+
+        const expected = [
             {
-                name: 'fdmg-stock-quote',
-                dataCurrency: 'CNY',
-                dataDifference: '+0,48%',
-                dataName: 'CHINA-CSI 100 Index',
-                dataPrice: '4.001,71',
-                exchange: 'XSHG',
-                isin: '',
+                name: 'p',
+                content:
+                    '<fdmg-stock-quote><fdmg-isin/><fdmg-exchange>XSHG</fdmg-exchange><fdmg-data-difference>+0,48%</fdmg-data-difference><fdmg-data-name>CHINA-CSI 100 Index</fdmg-data-name><fdmg-data-price>4.001,71</fdmg-data-price>​<fdmg-data-currency>CNY</fdmg-data-currency>​</fdmg-stock-quote>',
+                children: [
+                    {
+                        dataCurrency: 'CNY',
+                        dataDifference: '+0,48%',
+                        dataName: 'CHINA-CSI 100 Index',
+                        dataPrice: '4.001,71',
+                        exchange: 'XSHG',
+                        isin: '',
+                        name: 'fdmg-stock-quote',
+                    },
+                ],
             },
         ];
         const actual = parseXML(xmlString);
