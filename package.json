@@ -44,6 +44,6 @@
     },
     "dependencies": {
         "@types/xmldom": "^0.1.34",
-        "@xmldom/xmldom": "^0.7.13"
+        "@xmldom/xmldom": "^0.8.10"
     }
 }
