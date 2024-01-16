@@ -1,6 +1,6 @@
 {
     "name": "@fdmg/article-xml-json",
-    "version": "1.0.37",
+    "version": "1.0.38",
     "description": "parses fdmg-xml to article-json",
     "main": "index.js",
     "types": "index.d.ts",
