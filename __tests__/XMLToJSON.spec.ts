@@ -246,6 +246,21 @@ describe('parseXML', () => {
 
         expect(actual).toEqual(expected);
     });
+    it('should return a json with infographic', () => {
+        const xmlString =
+            '<fdmg-infographic height="500"><fdmg-url>https://localfocuswidgets.net/661e726fea11a</fdmg-url></fdmg-infographic>';
+
+        const expected = [
+            {
+                name: 'fdmg-infographic',
+                url: 'https://localfocuswidgets.net/661e726fea11a',
+                height: '500',
+            },
+        ];
+        const actual = parseXML(xmlString);
+
+        expect(actual).toEqual(expected);
+    });
     it('should return a json with infographic extended', () => {
         const xmlString =
             '<fdmg-infographic-extended><graphic view="responsive" name="Mobile.svg" url="https://fd-external-development.imgix.net/d2d6138666864d50b506ca1dd5a0ecdb.png"/><graphic view="desktop" name="medium.svg" url="https://fd-external-development.imgix.net/cafecf28e8b04467ab75532b273cd6ef.png"/><graphic view="xl" name="Large.svg" url="https://fd-external-development.imgix.net/5e0594906a214cd28bf106cfa78b4520.png"/></fdmg-infographic-extended>';
