@@ -7,7 +7,7 @@ export interface fdmgInfographic extends fdmgObject {
 export const getInfographic = (element: fdmgObject): fdmgInfographic => {
     const infographic: fdmgInfographic = {
         name: element.name,
-        url: findElement(element.children, 'fdmg-id'),
+        url: findElement(element.children, 'fdmg-url'),
         height: element.attributes?.height,
     };
 
