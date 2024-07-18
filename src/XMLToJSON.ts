@@ -27,10 +27,13 @@ import { getHR } from './elements/hr';
 import { getLiveblog } from './elements/liveblog';
 
 export const parseXML = (xmlString: string) => {
-    const fullJSON = new DOMParser().parseFromString(
-        `<xml>${xmlString}</xml>`,
-        'text/xml'
-    );
+    const fullJSON = new DOMParser({
+        errorHandler: {
+            warning: () => {},
+            error: console.error,
+            fatalError: console.error,
+        },
+    }).parseFromString(`<xml>${xmlString}</xml>`, 'text/xml');
     const json: Array<ReturnType<typeof mapElement>> = [].slice
         .call(fullJSON.documentElement.childNodes)
         .map((childNode: Element) => {
