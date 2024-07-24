@@ -314,12 +314,12 @@ describe('parseXML', () => {
     });
     it('should return a json with textframe', () => {
         const xmlString =
-            '<fdmg-text-frame><fdmg-heading>Rechts</fdmg-heading><fdmg-content>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna.</fdmg-content><fdmg-alignment>right</fdmg-alignment></fdmg-text-frame>';
+            '<fdmg-text-frame><fdmg-heading>Rechts</fdmg-heading><fdmg-content>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna.</fdmg-content><fdmg-alignment>right</fdmg-alignment><fdmg-text-frame-image><fdmg-id>452711</fdmg-id><fdmg-filename>28362-28366.png</fdmg-filename></fdmg-text-frame-image></fdmg-text-frame>';
 
         const expected = [
             {
                 name: 'fdmg-text-frame',
-                image: undefined,
+                image: '28362-28366.png',
                 title: 'Rechts',
                 descriptions: [
                     'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Etiam porta sem malesuada magna mollis euismod. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas sed diam eget risus varius blandit sit amet non magna.',
