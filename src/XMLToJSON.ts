@@ -1,5 +1,5 @@
 import { Attributes, fdmgObject } from './utils';
-import { XMLSerializer, DOMParser, Node } from '@xmldom/xmldom';
+import { XMLSerializer, DOMParser, Node, Element } from '@xmldom/xmldom';
 
 import { getAudio } from './elements/audio';
 import { getBulletPoints } from './elements/bulletPoints';
@@ -35,8 +35,8 @@ export const parseXML = (xmlString: string) => {
         },
     }).parseFromString(`<xml>${xmlString}</xml>`, 'text/xml');
     const json: Array<ReturnType<typeof mapElement>> = [].slice
-        .call(fullJSON.childNodes)
-        .map((childNode: Element) => {
+        .call((fullJSON as any).documentElement.childNodes)
+        .map((childNode: ChildNode) => {
             return mapElement(childNode);
         });
     return json;
@@ -60,7 +60,7 @@ const mapElement = (element: ChildNode): fdmgObject => {
         name: element.nodeName,
         content: element.textContent,
     };
-    const attributes = mapAttributes(element as Element);
+    const attributes = mapAttributes(element as unknown as Element);
     if (attributes) {
         node.attributes = attributes;
     }
