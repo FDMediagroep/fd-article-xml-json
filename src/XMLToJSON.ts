@@ -1,5 +1,5 @@
 import { Attributes, fdmgObject } from './utils';
-import { XMLSerializer, DOMParser } from '@xmldom/xmldom';
+import { XMLSerializer, DOMParser, Node } from '@xmldom/xmldom';
 
 import { getAudio } from './elements/audio';
 import { getBulletPoints } from './elements/bulletPoints';
@@ -28,14 +28,14 @@ import { getLiveblog } from './elements/liveblog';
 
 export const parseXML = (xmlString: string) => {
     const fullJSON = new DOMParser({
-        errorHandler: {
-            warning: () => {},
-            error: console.error,
-            fatalError: console.error,
+        onError: (level: 'warn' | 'error' | 'fatalError', msg: string) => {
+            if (level !== 'warn') {
+                console.error(msg);
+            }
         },
     }).parseFromString(`<xml>${xmlString}</xml>`, 'text/xml');
     const json: Array<ReturnType<typeof mapElement>> = [].slice
-        .call(fullJSON.documentElement.childNodes)
+        .call(fullJSON.childNodes)
         .map((childNode: Element) => {
             return mapElement(childNode);
         });
@@ -76,7 +76,7 @@ const mapElement = (element: ChildNode): fdmgObject => {
             node.children = [];
             for (let i = 0; i < element.childNodes.length; i++) {
                 const elementContent = new XMLSerializer().serializeToString(
-                    element.childNodes[i]
+                    element.childNodes[i] as unknown as Node
                 );
                 node.content = node.content.concat(elementContent);
                 node.children.push(mapElement(element.childNodes[i]));
