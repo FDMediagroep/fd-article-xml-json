@@ -1,5 +1,5 @@
 import { Attributes, fdmgObject } from './utils';
-import { XMLSerializer, DOMParser } from '@xmldom/xmldom';
+import { XMLSerializer, DOMParser, Node, Element } from '@xmldom/xmldom';
 
 import { getAudio } from './elements/audio';
 import { getBulletPoints } from './elements/bulletPoints';
@@ -28,15 +28,15 @@ import { getLiveblog } from './elements/liveblog';
 
 export const parseXML = (xmlString: string) => {
     const fullJSON = new DOMParser({
-        errorHandler: {
-            warning: () => {},
-            error: console.error,
-            fatalError: console.error,
+        onError: (level: 'warn' | 'error' | 'fatalError', msg: string) => {
+            if (level !== 'warn') {
+                console.error(msg);
+            }
         },
     }).parseFromString(`<xml>${xmlString}</xml>`, 'text/xml');
     const json: Array<ReturnType<typeof mapElement>> = [].slice
-        .call(fullJSON.documentElement.childNodes)
-        .map((childNode: Element) => {
+        .call((fullJSON as any).documentElement.childNodes)
+        .map((childNode: ChildNode) => {
             return mapElement(childNode);
         });
     return json;
@@ -60,7 +60,7 @@ const mapElement = (element: ChildNode): fdmgObject => {
         name: element.nodeName,
         content: element.textContent,
     };
-    const attributes = mapAttributes(element as Element);
+    const attributes = mapAttributes(element as unknown as Element);
     if (attributes) {
         node.attributes = attributes;
     }
@@ -76,7 +76,7 @@ const mapElement = (element: ChildNode): fdmgObject => {
             node.children = [];
             for (let i = 0; i < element.childNodes.length; i++) {
                 const elementContent = new XMLSerializer().serializeToString(
-                    element.childNodes[i]
+                    element.childNodes[i] as unknown as Node
                 );
                 node.content = node.content.concat(elementContent);
                 node.children.push(mapElement(element.childNodes[i]));

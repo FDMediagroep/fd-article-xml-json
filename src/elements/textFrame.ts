@@ -14,7 +14,6 @@ export const getTextFrame = (element: fdmgObject): fdmgTextFrame => {
         null
     );
     if (imageContainer) {
-        imageContainer.children;
         image = findElement(imageContainer.children, 'fdmg-filename');
     }
     return {

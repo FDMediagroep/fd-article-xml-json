@@ -18,6 +18,7 @@ describe('parseXML', () => {
                 width: '4134',
             },
             {
+                alignment: 'block',
                 name: 'fdmg-summary',
                 summaries: [
                     'Nederland was jarenlang een paradijs voor illegaal downloaden films en muziek.',
@@ -47,6 +48,7 @@ describe('parseXML', () => {
                 width: '4134',
             },
             {
+                alignment: 'block',
                 name: 'fdmg-summary',
                 summaries: [
                     'Nederland was jarenlang een paradijs voor illegaal downloaden films en muziek.',
@@ -337,6 +339,7 @@ describe('parseXML', () => {
 
         const expected = [
             {
+                alignment: 'block',
                 name: 'fdmg-summary',
                 title: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam.',
                 summaries: [
