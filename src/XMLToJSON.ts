@@ -26,6 +26,10 @@ import { getYoutube } from './elements/youtube';
 import { getHR } from './elements/hr';
 import { getLiveblog } from './elements/liveblog';
 
+const cleanupTags = (xmlString: string) => {
+    return xmlString.replace(/<br>/gi, '<br/>');
+};
+
 export const parseXML = (xmlString: string) => {
     const fullJSON = new DOMParser({
         onError: (level: 'warn' | 'error' | 'fatalError', msg: string) => {
@@ -33,7 +37,7 @@ export const parseXML = (xmlString: string) => {
                 console.error(msg);
             }
         },
-    }).parseFromString(`<xml>${xmlString}</xml>`, 'text/xml');
+    }).parseFromString(`<xml>${cleanupTags(xmlString)}</xml>`, 'text/xml');
     const json: Array<ReturnType<typeof mapElement>> = [].slice
         .call((fullJSON as any).documentElement.childNodes)
         .map((childNode: ChildNode) => {
