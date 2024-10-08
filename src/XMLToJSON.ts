@@ -1,5 +1,5 @@
 import { Attributes, fdmgObject } from './utils';
-import { XMLSerializer, DOMParser, Node, Element } from '@xmldom/xmldom';
+import { XMLSerializer, DOMParser } from '@xmldom/xmldom';
 
 import { getAudio } from './elements/audio';
 import { getBulletPoints } from './elements/bulletPoints';
@@ -26,18 +26,14 @@ import { getYoutube } from './elements/youtube';
 import { getHR } from './elements/hr';
 import { getLiveblog } from './elements/liveblog';
 
-const cleanupTags = (xmlString: string) => {
-    return xmlString.replace(/<br>/gi, '<br/>').replace(/<hr>/gi, '<hr/>');
-};
-
 export const parseXML = (xmlString: string) => {
     const fullJSON = new DOMParser({
-        onError: (level: 'warn' | 'error' | 'fatalError', msg: string) => {
-            if (level !== 'warn') {
-                console.error(msg);
-            }
+        errorHandler: {
+            warning: () => {},
+            error: console.error,
+            fatalError: console.error,
         },
-    }).parseFromString(`<xml>${cleanupTags(xmlString)}</xml>`, 'text/xml');
+    }).parseFromString(`<xml>${xmlString}</xml>`, 'text/xml');
     const json: Array<ReturnType<typeof mapElement>> = [].slice
         .call((fullJSON as any).documentElement.childNodes)
         .map((childNode: ChildNode) => {
