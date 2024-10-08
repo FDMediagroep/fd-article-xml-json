@@ -27,7 +27,7 @@ import { getHR } from './elements/hr';
 import { getLiveblog } from './elements/liveblog';
 
 const cleanupTags = (xmlString: string) => {
-    return xmlString.replace(/<br>/gi, '<br/>');
+    return xmlString.replace(/<br>/gi, '<br/>').replace(/<hr>/gi, '<hr/>');
 };
 
 export const parseXML = (xmlString: string) => {
