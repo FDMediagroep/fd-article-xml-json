@@ -1,3 +1,5 @@
+> :exclamation: **DEPRECATED** :exclamation: : Superseded by `contentElements` in `article` object which is already in JSON format.
+
 [![Node.js CI](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/node.js.yml/badge.svg)](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/FDMediagroep/fd-article-xml-json/badge.svg?branch=main)](https://coveralls.io/github/FDMediagroep/fd-article-xml-json?branch=main)
 [![Node.js Package](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/FDMediagroep/fd-article-xml-json/actions/workflows/npm-publish.yml)
@@ -22,11 +24,14 @@ Install the `fdmg-xml-json` as dependency for your project:
 ## Getting Started
 
 To run the repository locally:
+
 -   Run `npm i` to install required dependencies
 -   Run `npm run build` to build the project
 
 To use `@fdmg/article-xml-json` in your project:
+
 -   Install as a dependency
+
 ```
 import XMLToJSON from "@fdmg/article-xml-json";
 
@@ -36,4 +41,3 @@ function Foo() {
     )
 }
 ```
-
